@@ -36,19 +36,23 @@ public class ObservableVSIterator implements Program {
 		Observable<String> observable = Observable.from(list);
 		
 		// Subscribe to the Observable. It will PUSH it's values to the Subscriber, and it will be printed.
-		observable.subscribe(new Action1<String>() {
-			public void call(String element) {
-				System.out.println(element);
-			}
-		}, new Action1<Throwable>() {
-			public void call(Throwable t) {
-				System.err.println(t); // (1)
-			}
-		}, new Action0() {
-			public void call() {
-				System.out.println("We've finnished!"); // (2)
-			}
-		});
+//		observable.subscribe(new Action1<String>() {
+//			public void call(String element) {
+//				System.out.println(element);
+//			}
+//		}, new Action1<Throwable>() {
+//			public void call(Throwable t) {
+//				System.err.println(t); // (1)
+//			}
+//		}, new Action0() {
+//			public void call() {
+//				System.out.println("We've finnished!"); // (2)
+//			}
+//		});
+
+		observable.subscribe(element->System.out.println(element),
+				t->System.err.println(t),
+				()->System.out.println("we have finished!"));
 	}
 
 	@Override
